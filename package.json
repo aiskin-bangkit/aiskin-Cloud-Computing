@@ -1,0 +1,21 @@
+{
+  "name": "aiskin-cloud-computing",
+  "version": "1.0.0",
+  "description": "aiskin API Documentation (Bangkit Product Based Capstone Project - C242-PS401)",
+"main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase": "^11.0.2",
+    "nodemon": "^3.1.7"
+  }
+}
