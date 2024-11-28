@@ -6,5 +6,6 @@
     });
 
     router.use('/auth', require('./auth.route'));
+    router.use('/article', require('./article.route'));
 
     module.exports = router;
