@@ -7,5 +7,6 @@
 
     router.use('/auth', require('./auth.route'));
     router.use('/article', require('./article.route'));
+    router.use('/diseases', require('./disease.route'));
 
     module.exports = router;
