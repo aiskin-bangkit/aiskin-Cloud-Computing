@@ -1,0 +1,415 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Article API",
+      "version": "1.1.0",
+      "description": "API documentation for managing articles"
+    },
+    "paths": {
+      "/api/article": {
+        "get": {
+          "summary": "Get All Articles",
+          "description": "Retrieve a list of all articles",
+          "responses": {
+            "200": {
+              "description": "A list of articles",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "articleId123"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Article Name"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Article Description"
+                        },
+                        "resource": {
+                          "type": "string",
+                          "example": "Resource Name"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "http://example.com/image.jpg"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "Article content goes here..."
+                        },
+                        "created_at": {
+                          "type": "integer",
+                          "example": 1633024800000
+                        },
+                        "updated_at": {
+                          "type": "integer",
+                          "example": 1633024800000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to get articles"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add New Article",
+          "description": "Create a new article",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Article Name"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Article Description"
+                    },
+                    "resource": {
+                      "type": "string",
+                      "example": "Resource Name"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "http://example.com/image.jpg"
+                    },
+                    "content": {
+                      "type": "string",
+                      "example": "Article content goes here..."
+                    }
+                  },
+                  "required": ["name", "description", "resource", "image", "content"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Article added successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "success"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Article added successfully"
+                      },
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "articleId123"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Article Name"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Article Description"
+                          },
+                          "resource": {
+                            "type": "string",
+                            "example": "Resource Name"
+                          },
+                          "image": {
+                            "type": "string",
+                            "example": "http://example.com/image.jpg"
+                          },
+                          "content": {
+                            "type": "string",
+                            "example": "Article content goes here..."
+                          },
+                          "created_at": {
+                            "type": "integer",
+                            "example": 1633024800000
+                          },
+                          "updated_at": {
+                            "type": "integer",
+                            "example": 1633024800000
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Please provide all required fields"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to add article"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/article/{id}": {
+        "get": {
+          "summary": "Get Article by ID",
+          "description": "Retrieve a single article by its ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "example": "articleId123"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Article data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "articleId123"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Article Name"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Article Description"
+                      },
+                      "resource": {
+                        "type": "string",
+                        "example": "Resource Name"
+                      },
+                      "image": {
+                        "type": "string",
+                        "example": "http://example.com/image.jpg"
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "Article content goes here..."
+                      },
+                      "created_at": {
+                        "type": "integer",
+                        "example": 1633024800000
+                      },
+                      "updated_at": {
+                        "type": "integer",
+                        "example": 1633024800000
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Article not found"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to get article"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/article/latest": {
+        "get": {
+          "summary": "Get Latest Articles",
+          "description": "Retrieve the latest articles",
+          "responses": {
+            "200": {
+              "description": "A list of latest articles",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "articleId123"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Article Name"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Article Description"
+                        },
+                        "resource": {
+                          "type": "string",
+                          "example": "Resource Name"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "http://example.com/image.jpg"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "Article content goes here..."
+                        },
+                        "created_at": {
+                          "type": "integer",
+                          "example": 1633024800000
+                        },
+                        "updated_at": {
+                          "type": "integer",
+                          "example": 1633024800000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to get latest articles"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,352 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Disease API",
+      "version": "1.0.0",
+      "description": "API documentation for managing diseases"
+    },
+    "paths": {
+      "/api/disease": {
+        "get": {
+          "summary": "Get All Diseases",
+          "description": "Retrieve a list of all diseases",
+          "responses": {
+            "200": {
+              "description": "A list of diseases",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "diseaseId123"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Disease Name"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Disease Description"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "http://example.com/image.jpg"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "Disease content goes here..."
+                        },
+                        "treatment_recommendation": {
+                          "type": "string",
+                          "example": "Treatment Recommendation"
+                        },
+                        "medicine_recommendation": {
+                          "type": "string",
+                          "example": "Medicine Recommendation"
+                        },
+                        "created_at": {
+                          "type": "integer",
+                          "example": 1633024800000
+                        },
+                        "updated_at": {
+                          "type": "integer",
+                          "example": 1633024800000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to get diseases"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add New Disease",
+          "description": "Create a new disease",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Disease Name"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Disease Description"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "http://example.com/image.jpg"
+                    },
+                    "content": {
+                      "type": "string",
+                      "example": "Disease content goes here..."
+                    },
+                    "treatment_recommendation": {
+                      "type": "string",
+                      "example": "Treatment Recommendation"
+                    },
+                    "medicine_recommendation": {
+                      "type": "string",
+                      "example": "Medicine Recommendation"
+                    }
+                  },
+                  "required": ["name", "description", "image", "content", "treatment_recommendation", "medicine_recommendation"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Disease added successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "success"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Disease added successfully"
+                      },
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "diseaseId123"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Disease Name"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Disease Description"
+                          },
+                          "image": {
+                            "type": "string",
+                            "example": "http://example.com/image.jpg"
+                          },
+                          "content": {
+                            "type": "string",
+                            "example": "Disease content goes here..."
+                          },
+                          "treatment_recommendation": {
+                            "type": "string",
+                            "example": "Treatment Recommendation"
+                          },
+                          "medicine_recommendation": {
+                            "type": "string",
+                            "example": "Medicine Recommendation"
+                          },
+                          "created_at": {
+                            "type": "integer",
+                            "example": 1633024800000
+                          },
+                          "updated_at": {
+                            "type": "integer",
+                            "example": 1633024800000
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Please provide all required fields"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to add disease"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/disease/{id}": {
+        "get": {
+          "summary": "Get Disease by ID",
+          "description": "Retrieve a single disease by its ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "example": "diseaseId123"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Disease data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "diseaseId123"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Disease Name"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Disease Description"
+                      },
+                      "image": {
+                        "type": "string",
+                        "example": "http://example.com/image.jpg"
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "Disease content goes here..."
+                      },
+                      "treatment_recommendation": {
+                        "type": "string",
+                        "example": "Treatment Recommendation"
+                      },
+                      "medicine_recommendation": {
+                        "type": "string",
+                        "example": "Medicine Recommendation"
+                      },
+                      "created_at": {
+                        "type": "integer",
+                        "example": 1633024800000
+                      },
+                      "updated_at": {
+                        "type": "integer",
+                        "example": 1633024800000
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Disease not found"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Failed to get disease"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
