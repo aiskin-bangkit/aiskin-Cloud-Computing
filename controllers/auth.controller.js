@@ -1,7 +1,17 @@
 const { db } = require("../config/db");
 const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
-const { collection, addDoc, getDocs, where, query } = require("firebase/firestore");
+const {
+  collection,
+  addDoc,
+  getDocs,
+  where,
+  query,
+} = require("firebase/firestore");
+
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const signIn = async (req, res) => {
   try {
@@ -26,8 +36,10 @@ const signIn = async (req, res) => {
     }
 
     let userData;
+    let userId;
     querySnapshot.forEach((doc) => {
       userData = doc.data();
+      userId = doc.id;
     });
 
     // Compare the provided password with the hashed password in the database
@@ -40,9 +52,16 @@ const signIn = async (req, res) => {
       });
     }
 
+    const token = jwt.sign(
+      { id: userId, email: userData.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "12h" }
+    );
+
     res.status(200).json({
       status: "success",
       message: "User signed in successfully",
+      token: token,
     });
   } catch (error) {
     res.status(500).json({
