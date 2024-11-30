@@ -1,0 +1,42 @@
+###
+GET http://localhost:3000/api
+
+###
+GET http://localhost:3000/api/article
+
+###
+GET http://localhost:3000/api/disease
+
+###
+POST http://localhost:3000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email": "devan12@testing.com",
+    "password": "rahasia"
+}
+
+###
+GET http://localhost:3000/api/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkQWJBdGE2WmJGRG52WktxakE1IiwiZW1haWwiOiJkZXZhbjEyQHRlc3RpbmcuY29tIiwiaWF0IjoxNzMyOTY5NDI0LCJleHAiOjE3MzMwMTI2MjR9.LGTLTjcVF0QTXNONE1NkSf2vNydjQOnc3mGem-eh6ro
+
+###
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "name": "devan",
+    "email": "devan12@testing.com",
+    "password": "rahasia"
+}
+
+###
+PATCH  http://localhost:3000/api/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkQWJBdGE2WmJGRG52WktxakE1IiwiZW1haWwiOiJkZXZhbjEyQHRlc3RpbmcuY29tIiwiaWF0IjoxNzMyOTY5NDI0LCJleHAiOjE3MzMwMTI2MjR9.LGTLTjcVF0QTXNONE1NkSf2vNydjQOnc3mGem-eh6ro
+Content-Type: application/json
+
+{
+    "name" : "agus sakit mata",
+    "password" : "makanmakan",
+    "image_profile" : "ikan"
+}
