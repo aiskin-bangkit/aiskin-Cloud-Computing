@@ -34,3 +34,5 @@ jspm_packages/
 
 # Optional stylelint cache
 .stylelintcache
+
+.test.http
