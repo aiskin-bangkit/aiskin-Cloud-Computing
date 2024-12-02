@@ -9,6 +9,6 @@ router.use("/auth", require("./auth.route"));
 router.use("/article", require("./article.route"));
 router.use("/disease", require("./disease.route"));
 router.use("/user", require("./user.route"));
-router.use("/history", require("./predict.route"));
+router.use("/history", require("./history.route"));
 
 module.exports = router;

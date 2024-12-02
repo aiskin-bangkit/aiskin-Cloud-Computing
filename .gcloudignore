@@ -1,0 +1,5 @@
+node_modules/
+.git
+.service-account-key
+.gitignore
+test.http

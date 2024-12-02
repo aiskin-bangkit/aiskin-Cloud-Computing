@@ -3,6 +3,7 @@ GET http://localhost:3000/api
 
 ###
 GET http://localhost:3000/api/article
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNHZkZWc3ZrT293Y0QzM0NSS05ZIiwiZW1haWwiOiJkZXZhbmRpb0B0ZXN0aW5nLmNvbSIsImlhdCI6MTczMzE2MjM4NiwiZXhwIjoxNzMzMjA1NTg2fQ.5OrRfwV5pwf1C8a5otwMFnKRmC_IRw75WLpbOwZH3tY
 
 ###
 GET http://localhost:3000/api/disease
@@ -12,13 +13,19 @@ POST http://localhost:3000/api/auth/signin
 Content-Type: application/json
 
 {
-    "email": "devan12@testing.com",
-    "password": "rahasia"
+    "email": "devandio@testing.com",
+    "password": "rahasia123"
 }
 
 ###
 GET http://localhost:3000/api/user/profile
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkQWJBdGE2WmJGRG52WktxakE1IiwiZW1haWwiOiJkZXZhbjEyQHRlc3RpbmcuY29tIiwiaWF0IjoxNzMyOTY5NDI0LCJleHAiOjE3MzMwMTI2MjR9.LGTLTjcVF0QTXNONE1NkSf2vNydjQOnc3mGem-eh6ro
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNHZkZWc3ZrT293Y0QzM0NSS05ZIiwiZW1haWwiOiJkZXZhbmRpb0B0ZXN0aW5nLmNvbSIsImlhdCI6MTczMzE1OTgyNCwiZXhwIjoxNzMzMjAzMDI0fQ.gFn-ks6oqv2CznqM2SMYN3US4PBaBinppXzDJQ-5bUY
+
+###
+POST http://localhost:3000/api/auth/logout
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNHZkZWc3ZrT293Y0QzM0NSS05ZIiwiZW1haWwiOiJkZXZhbmRpb0B0ZXN0aW5nLmNvbSIsImlhdCI6MTczMzE1OTQyNSwiZXhwIjoxNzMzMjAyNjI1fQ.xygdmh1cUaV3zWtY4D3muV5C0HKxeQPdx0X3aoFAP4M
+
 
 ###
 POST http://localhost:3000/api/auth/signup
@@ -26,13 +33,13 @@ Content-Type: application/json
 
 {
     "name": "devan",
-    "email": "devan12@testing.com",
-    "password": "rahasia"
+    "email": "devandio@testing.com",
+    "password": "rahasia123"
 }
 
 ###
 PATCH  http://localhost:3000/api/user/profile
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNkQWJBdGE2WmJGRG52WktxakE1IiwiZW1haWwiOiJkZXZhbjEyQHRlc3RpbmcuY29tIiwiaWF0IjoxNzMyOTY5NDI0LCJleHAiOjE3MzMwMTI2MjR9.LGTLTjcVF0QTXNONE1NkSf2vNydjQOnc3mGem-eh6ro
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlvRTZXbDB2ajVET0M1bXVrc1dnIiwiZW1haWwiOiJkZXZhbmFkdWhAdGVzdGluZy5jb20iLCJpYXQiOjE3MzMxNDk2ODYsImV4cCI6MTczMzE5Mjg4Nn0.qsmgyoMp0rBGoo_JTNEV3xLfGx2rt8DEuiGTOCIcxOM
 Content-Type: application/json
 
 {
@@ -40,3 +47,20 @@ Content-Type: application/json
     "password" : "makanmakan",
     "image_profile" : "ikan"
 }
+
+###
+POST  http://localhost:3000/api/history
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNHZkZWc3ZrT293Y0QzM0NSS05ZIiwiZW1haWwiOiJkZXZhbmRpb0B0ZXN0aW5nLmNvbSIsImlhdCI6MTczMzE2MjM4NiwiZXhwIjoxNzMzMjA1NTg2fQ.5OrRfwV5pwf1C8a5otwMFnKRmC_IRw75WLpbOwZH3tY
+
+{
+    "disease_name": "devan",
+    "percentage": "devandio@testing.com",
+    "image": "rahasia123",
+    "other_suggestion": "rahasia123"
+}
+
+###
+GET http://localhost:3000/api/history
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNHZkZWc3ZrT293Y0QzM0NSS05ZIiwiZW1haWwiOiJkZXZhbmRpb0B0ZXN0aW5nLmNvbSIsImlhdCI6MTczMzE2MjM4NiwiZXhwIjoxNzMzMjA1NTg2fQ.5OrRfwV5pwf1C8a5otwMFnKRmC_IRw75WLpbOwZH3tY
