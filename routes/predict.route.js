@@ -1,13 +1,12 @@
 const router = require("express").Router();
 const {
-  Predict,
-  getPredictionHistoryByUser,
-  getPredictionHistoryById,
+  predict,
+  getPredictHistory,
+  upload,
 } = require("../controllers/predict.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
 
-router.post("/", verifyToken, Predict);
-router.get("/", verifyToken, getPredictionHistoryByUser);
-router.get("/:id", verifyToken, getPredictionHistoryById);
+router.get("/", verifyToken, getPredictHistory);
+router.post("/", verifyToken, upload.single("image_predict"), predict);
 
 module.exports = router;

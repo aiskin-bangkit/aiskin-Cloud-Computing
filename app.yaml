@@ -1,3 +1,15 @@
 runtime: nodejs20
+<<<<<<< HEAD
 instance_class: F1
 env: standard
+=======
+service: default
+env_variables: 
+  FB_API_KEY: "AIzaSyC2eBn1tUZxIfapJNCUXhfK4NazhdZn3j4"
+  FB_AUTH_DOMAIN: "c242-ps401-aiskin.firebaseapp.com"
+  FB_PROJECT_ID: "c242-ps401-aiskin"
+  FB_STORAGE_BUCKET: "c242-ps401-aiskin.firebasestorage.app"
+  FB_MESSAGING_SENDER_ID: "19277422646"
+  FB_APP_ID: "1:19277422646:web:76711bfd9fc51c16b3f897"
+  JWT_SECRET: "1234123sfrt"
+>>>>>>> 5700370 (finished deploying all backend features Ai-Skin)

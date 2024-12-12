@@ -5,7 +5,7 @@
 aiskin API Documentation (Bangkit Product Based Capstone Project - C242-PS401)
 
 ```sh
-https://capstone-project-387215.et.r.appspot.com/api-docs/
+https://c242-ps401-aiskin.et.r.appspot.com/api/
 ```
 
 ## Cloud Technology

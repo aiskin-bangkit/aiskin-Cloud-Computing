@@ -1,9 +1,25 @@
-const { db } = require("../config/db");
+const { db, app } = require("../config/db");
 const bcrypt = require("bcrypt");
 const { getDoc, doc, setDoc } = require("firebase/firestore");
+const {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} = require("firebase/storage");
+const multer = require("multer");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
+
+// Initialize Firebase Storage
+const storage = getStorage(app);
+
+// Configure Multer
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 2 * 1024 * 1024 }, // Limit file size to 2MB
+});
 
 const getUserProfile = async (req, res) => {
   try {
@@ -45,7 +61,8 @@ const updateUserProfile = async (req, res) => {
 
     if (userSnap.exists()) {
       const user = userSnap.data();
-      const { name, email, password, image_profile } = req.body;
+      const { name, email, password } = req.body;
+      const image_profile = req.file;
 
       if (name) {
         user.name = name;
@@ -58,7 +75,23 @@ const updateUserProfile = async (req, res) => {
         user.password = hashedPassword;
       }
       if (image_profile) {
-        user.image_profile = image_profile;
+        // Define storage reference
+        const storageRef = ref(
+          storage,
+          `profile_images/${req.user.id}${Date.now()}${
+            image_profile.originalname
+          }`
+        );
+
+        // Upload the file
+        const metadata = {
+          contentType: image_profile.mimetype,
+        };
+        await uploadBytes(storageRef, image_profile.buffer, metadata);
+
+        // Get the download URL
+        const downloadURL = await getDownloadURL(storageRef);
+        user.image_profile = downloadURL;
       }
 
       await setDoc(userRef, user);
@@ -100,4 +133,5 @@ const updateUserProfile = async (req, res) => {
 module.exports = {
   getUserProfile,
   updateUserProfile,
+  upload,
 };
